@@ -1,4 +1,5 @@
 **Overview**
+
 social post (Mini Réseau Social) est une application full-stack construite avec Angular pour le front-end et Node.js avec Express.js pour le back-end. 
 L'application permet aux utilisateurs de créer, aimer et commenter des publications, avec des fonctionnalités pour gérer l'authentification des utilisateurs et manipuler les données des publications.
 
