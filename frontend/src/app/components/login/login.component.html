@@ -1,0 +1,47 @@
+<section class="container h-[70vh] mx-auto pt-14 flexCenter flex-col gap-8">
+  <h2 class="text-center text-3xl font-bold">Welcome Back 👋</h2>
+  <form
+    (submit)="handleSubmit()"
+    class="p-4 shadow-md rounded-md w-[95%] lg:w-1/2 flex flex-col"
+  >
+    <label for="email">Email</label>
+    <input
+      type="email"
+      name="email"
+      id="email"
+      required=""
+      [(ngModel)]="loginForm.email"
+      required
+      autoComplete="on"
+      class="rounded py-1 px-2 hover:border-black border-2 mb-5"
+      placeholder="example123@gmail.com"
+    />
+    <label for="password">Password</label>
+    <input
+      type="password"
+      name="password"
+      id="password"
+      required=""
+      [(ngModel)]="loginForm.password"
+      required
+      autoComplete="on"
+      class="rounded py-1 px-2 hover:border-black border-2"
+      placeholder="********"
+    />
+    <p class="text-red-500 mt-2" *ngIf="errorMsg">{{ errorMsg }}</p>
+    <button
+      type="submit"
+      class="p-2 rounded bg-black text-white mt-5 flexCenter"
+      [disabled]="isPending"
+    >
+      <ng-container *ngIf="isPending; else buttonText">
+        <span class="loader"></span>
+      </ng-container>
+      <ng-template #buttonText> Login </ng-template>
+    </button>
+    <p class="text-sm p-1">
+      No account?
+      <a href="/signup" class="underline cursor-pointer"> Sign up </a>
+    </p>
+  </form>
+</section>

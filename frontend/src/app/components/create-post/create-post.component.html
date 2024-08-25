@@ -1,0 +1,24 @@
+<section class="container h-[70vh] mx-auto pt-14 flexCenter flex-col gap-8">
+  <h2 class="text-center font-medium text-3xl py-14">Create New Post 📝</h2>
+  <form
+  (submit)="createPost()"
+    class="p-4 shadow-md rounded-md w-[95%] lg:w-1/2 flex flex-col">
+    <label htmlFor="content">Content</label>
+    <textarea
+      name="content"
+      id="content"
+      [(ngModel)]="postContent"
+      placeholder="Enter post content here"
+      class="rounded py-1 px-2 hover:border-black border-2 min-h-56"
+    ></textarea>
+    <div class="flex gap-2 justify-end mt-5">
+      <button type="reset" class="px-2 py-1 rounded">Cancle</button>
+      <button type="submit" class="px-2 py-1 rounded bg-black text-white">
+        <ng-container *ngIf="isPending; else createPostBtn">
+          <span class="loader"></span>
+        </ng-container>
+        <ng-template #createPostBtn>Create</ng-template>
+      </button>
+    </div>
+  </form>
+</section>

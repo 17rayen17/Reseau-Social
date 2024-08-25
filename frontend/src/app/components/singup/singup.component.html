@@ -1,0 +1,55 @@
+<section class="container h-[70vh] mx-auto pt-14 flexCenter flex-col gap-8">
+  <h2 class="text-center text-3xl font-bold">Create new account ✍️</h2>
+  <form
+    (submit)="handleSubmit()"
+    class="p-4 shadow-md rounded-md w-[95%] lg:w-1/2 flex flex-col"
+  >
+    <label for="username">Username</label>
+    <input
+      type="text"
+      name="username"
+      id="username"
+      required
+      [(ngModel)]="registerForm.username"
+      autoComplete="on"
+      class="rounded py-1 px-2 hover:border-black border-2 mb-5"
+      placeholder="example123"
+    />
+    <label for="email">Email</label>
+    <input
+      type="email"
+      name="email"
+      required
+      [(ngModel)]="registerForm.email"
+      id="email"
+      autoComplete="on"
+      class="rounded py-1 px-2 hover:border-black border-2 mb-5"
+      placeholder="example123@gmail.com"
+    />
+    <label for="password">Password</label>
+    <input
+      type="password"
+      name="password"
+      id="password"
+      required
+      [(ngModel)]="registerForm.password"
+      class="rounded py-1 px-2 hover:border-black border-2"
+      placeholder="********"
+    />
+    <button
+      type="submit"
+      disabled="{isPending}"
+      class="p-2 rounded bg-black flexCenter text-white mt-5"
+      [disabled]="isPending"
+    >
+    <ng-container *ngIf="isPending; else signupText">
+      <span class="loader"></span>
+    </ng-container>
+    <ng-template #signupText>Signup</ng-template>
+    </button>
+    <p class="text-sm p-1">
+      Already have an account?
+      <a href="/login" class="underline"> Login </a>
+    </p>
+  </form>
+</section>

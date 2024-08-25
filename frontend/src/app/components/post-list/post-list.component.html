@@ -1,0 +1,46 @@
+<section class="w-full flexCenter flex-col gap-10 mx-auto mt-10 mb-30">
+  <div *ngIf="isLoading" class="text-center">Loading posts...</div>
+  <div *ngIf="errorMsg" class="text-center text-red-500">{{ errorMsg }}</div>
+
+  <div
+    *ngFor="let post of posts; let i = index"
+    class="w-2/3 border border-black/20 shadow-lg rounded-md p-4 flex flex-col gap-5"
+  >
+    <div class="w-full flexBetween relative">
+      <img
+        src="/assets/pdp.jpeg"
+        alt="profile picture"
+        class="size-[45px] rounded-full border border-black bg-black"
+      />
+      <button type="button" class="flexCenter" (click)="toggleMenu(i)">
+        <img src="/assets/threeDots.png" alt="threeDots" class="size-6" />
+      </button>
+      <!-- Conditionally render the additional buttons -->
+      <div
+        *ngIf="selectedPostIndex === i"
+        class="absolute right-0 top-10 bg-white border rounded shadow-lg p-2 z-50 md:w-32"
+      >
+        <!-- delete post -->
+        <button
+          (click)="deletePost(post._id, i)"
+          type="button"
+          class="w-full py-1 px-4 hover:bg-red-500/10 rounded-sm transition-all group"
+        >
+          <span class="group-hover:text-red-500 transition-all">Delete</span>
+        </button>
+      </div>
+    </div>
+    <p>{{ post.content }}</p>
+    <!-- like button -->
+    <div (click)="toggleLike(post._id, i)" class="flexStart gap-5">
+      <button type="button" class="flexCenter gap-2">
+        <img src="/assets/heart.png" alt="like" class="size-6" />
+        <span>{{ post.likes.length }}</span>
+      </button>
+      <!-- comment button -->
+      <button type="button" class="flexCenter">
+        <img src="/assets/comment.svg" alt="comment" class="size-6" />
+      </button>
+    </div>
+  </div>
+</section>
